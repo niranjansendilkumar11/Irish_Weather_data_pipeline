@@ -1,16 +1,16 @@
+from config import IRISH_CITIES
 from api import get_weather
 
 
 def main():
 
-    weather = get_weather("Dublin")
+    weather = get_weather(IRISH_CITIES[0])
 
-    if weather:
+    print("\nCurrent Weather Information")
+    print("-" * 30)
 
-        print("City:", weather["name"])
-        print("Temperature:", weather["main"]["temp"])
-        print("Humidity:", weather["main"]["humidity"])
-        print("Weather:", weather["weather"][0]["description"])
+    for key, value in weather.items():
+        print(f"{key.replace('_', ' ').title()}: {value}")
 
 
 if __name__ == "__main__":

@@ -1,5 +1,3 @@
-"""Functions for interacting with the OpenWeatherMap API"""
-
 import requests
 
 from config import API_KEY, BASE_URL
@@ -15,7 +13,21 @@ def get_weather(city):
 
     response = requests.get(BASE_URL, params=params, timeout=10)
 
-    if response.status_code == 200:
-        return response.json()
+    if response.status_code != 200:
+        return None
 
-    return None 
+    data = response.json()
+
+    weather = {
+        "city": data["name"],
+        "country": data["sys"]["country"],
+        "temperature": data["main"]["temp"],
+        "feels_like": data["main"]["feels_like"],
+        "humidity": data["main"]["humidity"],
+        "pressure": data["main"]["pressure"],
+        "wind_speed": data["wind"]["speed"],
+        "weather": data["weather"][0]["main"],
+        "description": data["weather"][0]["description"]
+    }
+
+    return weather
