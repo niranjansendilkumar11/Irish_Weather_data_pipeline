@@ -3,11 +3,14 @@ from api import get_weather
 
 def main():
 
-    print("Weather Data Pipeline\n")
+    weather = get_weather("Dublin")
 
-    response = get_weather("Dublin")
+    if weather:
 
-    print("Status Code:", response.status_code)
+        print("City:", weather["name"])
+        print("Temperature:", weather["main"]["temp"])
+        print("Humidity:", weather["main"]["humidity"])
+        print("Weather:", weather["weather"][0]["description"])
 
 
 if __name__ == "__main__":
