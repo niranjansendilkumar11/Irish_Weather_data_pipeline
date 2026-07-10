@@ -10,29 +10,34 @@ from database import (
 
 def main():
 
-    # Fetch weather for Dublin
-    weather = get_weather(IRISH_CITIES[0])
+    # Fetch weather for all configured Irish cities
+    weather_records = []
 
-    # Connect to the database
+    for city in IRISH_CITIES:
+
+        weather = get_weather(city)
+
+        if weather:
+            weather_records.append(weather)
+
+    # Connect to SQLite database
     connection = create_connection()
     print("Database connected successfully.")
 
-    # Create table
+    # Create table if it doesn't exist
     create_weather_table(connection)
     print("weather_hourly table ready.")
 
-    # Insert weather record
-    insert_weather_data(connection, weather)
+    # Insert all weather records
+    for weather in weather_records:
+        insert_weather_data(connection, weather)
+
     print("Weather data inserted successfully.")
 
-    # Display database contents
+    # Show total records in database
     rows = fetch_all_weather(connection)
 
-    print("\nDatabase Contents")
-    print("-" * 40)
-
-    for row in rows:
-        print(row)
+    print(f"\nTotal records stored in database: {len(rows)}")
 
     connection.close()
 
@@ -40,8 +45,22 @@ def main():
     print("\nCurrent Weather Information")
     print("-" * 40)
 
-    for key, value in weather.items():
-        print(f"{key.replace('_', ' ').title()}: {value}")
+    for weather in weather_records:
+
+        print(f"\nCity         : {weather['city']}")
+        print(f"Country      : {weather['country']}")
+        print(f"Temperature  : {weather['temperature']} °C")
+        print(f"Humidity     : {weather['humidity']} %")
+        print(f"Pressure     : {weather['pressure']} hPa")
+        print(f"Wind Speed   : {weather['wind_speed']} m/s")
+        print(f"Weather      : {weather['description']}")
+
+    print("\n" + "=" * 50)
+    print("Weather Pipeline Completed Successfully")
+    print("=" * 50)
+    print(f"Cities Processed : {len(weather_records)}")
+    print(f"Records Inserted : {len(weather_records)}")
+    print("=" * 50)
 
 
 if __name__ == "__main__":
