@@ -1,6 +1,3 @@
-"""
-Database functions for the Weather Data Pipeline.
-"""
 
 import sqlite3
 from config import DATABASE_PATH

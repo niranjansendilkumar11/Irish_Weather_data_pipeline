@@ -7,9 +7,15 @@ from database import (
     fetch_all_weather,
     weather_record_exists
 )
+import logging
+from utils import setup_logging
 
 
 def main():
+
+        setup_logging()
+
+try:
 
     # Fetch weather for all configured Irish cities
     weather_records = []
@@ -20,14 +26,16 @@ def main():
 
         if weather:
             weather_records.append(weather)
+        else:
+            logging.warning(f"Could not fetch weather for {city}")
 
     # Connect to SQLite database
     connection = create_connection()
-    print("Database connected successfully.")
+    logging.info("Database connected successfully.")
 
     # Create table if it doesn't exist
     create_weather_table(connection)
-    print("weather_hourly table ready.")
+    logging.info("weather_hourly table ready.")
 
     # Insert all weather records
     records_inserted = 0
@@ -35,13 +43,13 @@ def main():
     for weather in weather_records:
 
      if weather_record_exists(connection, weather["city"]):
-        print(f"Skipped {weather['city']} (already collected today)")
+        logging.info(f"Skipped {weather['city']} (already collected today)")
         continue
 
     insert_weather_data(connection, weather)
     records_inserted += 1
 
-    print("Weather data inserted successfully.")
+    logging.info("Weather data inserted successfully.")
 
     # Show total records in database
     rows = fetch_all_weather(connection)
@@ -72,5 +80,9 @@ def main():
     print("=" * 50)
 
 
-if __name__ == "__main__":
-    main()
+    if __name__ == "__main__":
+        main()
+
+except Exception as error:
+
+        logging.error(f"Pipeline failed: {error}")
