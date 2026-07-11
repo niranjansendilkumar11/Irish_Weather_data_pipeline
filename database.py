@@ -77,3 +77,19 @@ def fetch_all_weather(connection):
     cursor.execute("SELECT * FROM weather_hourly")
 
     return cursor.fetchall()
+
+def weather_record_exists(connection, city):
+
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM weather_hourly
+        WHERE city = ?
+        AND DATE(collected_at) = DATE('now')
+    """, (city,))
+
+    count = cursor.fetchone()[0]
+
+    return count > 0

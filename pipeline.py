@@ -4,7 +4,8 @@ from database import (
     create_connection,
     create_weather_table,
     insert_weather_data,
-    fetch_all_weather
+    fetch_all_weather,
+    weather_record_exists
 )
 
 
@@ -29,8 +30,16 @@ def main():
     print("weather_hourly table ready.")
 
     # Insert all weather records
+    records_inserted = 0
+
     for weather in weather_records:
-        insert_weather_data(connection, weather)
+
+     if weather_record_exists(connection, weather["city"]):
+        print(f"Skipped {weather['city']} (already collected today)")
+        continue
+
+    insert_weather_data(connection, weather)
+    records_inserted += 1
 
     print("Weather data inserted successfully.")
 
@@ -59,7 +68,7 @@ def main():
     print("Weather Pipeline Completed Successfully")
     print("=" * 50)
     print(f"Cities Processed : {len(weather_records)}")
-    print(f"Records Inserted : {len(weather_records)}")
+    print(f"Records Inserted : {records_inserted}")
     print("=" * 50)
 
 
