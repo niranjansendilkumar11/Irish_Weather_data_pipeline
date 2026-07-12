@@ -46,3 +46,22 @@ def categorize_wind_speed(speed):
         return "Moderate"
 
     return "Strong"
+
+def generate_weather_features(weather_records):
+
+    engineered_features = []
+
+    for weather in weather_records:
+
+        feature = {
+            "city": weather["city"],
+            "country": weather["country"],
+            "temperature_category": categorize_temperature(weather["temperature"]),
+            "humidity_category": categorize_humidity(weather["humidity"]),
+            "pressure_category": categorize_pressure(weather["pressure"]),
+            "wind_category": categorize_wind_speed(weather["wind_speed"])
+        }
+
+        engineered_features.append(feature)
+
+    return engineered_features
