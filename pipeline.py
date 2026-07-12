@@ -9,6 +9,12 @@ from database import (
 )
 import logging
 from utils import setup_logging
+from feature_engineering import (
+    categorize_temperature,
+    categorize_humidity,
+    categorize_pressure,
+    categorize_wind_speed
+)
 
 
 def main():
@@ -26,6 +32,24 @@ try:
 
         if weather:
             weather_records.append(weather)
+        if weather_records:
+
+            sample = weather_records[0]
+
+            print("\nEngineered Features")
+            print("-" * 30)
+
+            print("Temperature Category:",
+                categorize_temperature(sample["temperature"]))
+
+            print("Humidity Category:",
+                categorize_humidity(sample["humidity"]))
+
+            print("Pressure Category:",
+                categorize_pressure(sample["pressure"]))
+
+            print("Wind Category:",
+                categorize_wind_speed(sample["wind_speed"]))
         else:
             logging.warning(f"Could not fetch weather for {city}")
 
