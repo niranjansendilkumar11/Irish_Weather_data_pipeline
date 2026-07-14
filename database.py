@@ -90,3 +90,65 @@ def weather_record_exists(connection, city):
     count = cursor.fetchone()[0]
 
     return count > 0
+
+def create_feature_table(connection):
+
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        CREATE TABLE IF NOT EXISTS weather_features (
+
+            id INTEGER PRIMARY KEY AUTOINCREMENT,
+
+            city TEXT,
+
+            country TEXT,
+
+            temperature_category TEXT,
+
+            humidity_category TEXT,
+
+            pressure_category TEXT,
+
+            wind_category TEXT,
+
+            collected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
+
+        )
+    """)
+
+    connection.commit()
+
+def insert_weather_feature(connection, feature):
+    """
+    Insert engineered weather features.
+    """
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        INSERT INTO weather_features (
+
+            city,
+            country,
+            temperature_category,
+            humidity_category,
+            pressure_category,
+            wind_category
+
+        )
+
+        VALUES (?, ?, ?, ?, ?, ?)
+    """, (
+
+        feature["city"],
+        feature["country"],
+        feature["temperature_category"],
+        feature["humidity_category"],
+        feature["pressure_category"],
+        feature["wind_category"]
+
+    ))
+
+    connection.commit()

@@ -5,7 +5,9 @@ from api import get_weather
 from database import (
     create_connection,
     create_weather_table,
+    create_feature_table,
     insert_weather_data,
+    insert_weather_feature,
     fetch_all_weather,
     weather_record_exists
 )
@@ -39,6 +41,7 @@ def main():
 
         for feature in engineered_features:
 
+
             print(f"\nCity                 : {feature['city']}")
             print(f"Country              : {feature['country']}")
             print(f"Temperature Category : {feature['temperature_category']}")
@@ -53,22 +56,32 @@ def main():
         create_weather_table(connection)
         logging.info("weather_hourly table ready.")
 
-        records_inserted = 0
+        create_feature_table(connection)
+        logging.info("weather_features table ready.")
 
-        for weather in weather_records:
+        records_inserted = 0
+        features_inserted = 0
+
+        for weather, feature in zip(weather_records, engineered_features):
 
             if weather_record_exists(connection, weather["city"]):
                 logging.info(f"Skipped {weather['city']} (already collected today)")
                 continue
 
+            # Inserting raw weather
             insert_weather_data(connection, weather)
             records_inserted += 1
 
+            # Inserting engineered features
+            insert_weather_feature(connection, feature)
+            features_inserted += 1
+
         logging.info("Weather data inserted successfully.")
+        logging.info("Engineered weather features stored successfully.")
 
         rows = fetch_all_weather(connection)
 
-        print(f"\nTotal records stored in database: {len(rows)}")
+        print(f"\nTotal raw weather records stored: {len(rows)}")
 
         connection.close()
 
