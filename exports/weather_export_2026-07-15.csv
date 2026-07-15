@@ -1,0 +1,21 @@
+City,Country,Temperature,Feels Like,Humidity,Pressure,Wind Speed,Weather,Description
+Dublin,IE,20.25,20.34,77,1026,5.81,Clouds,few clouds
+Cork,IE,22.62,22.77,70,1024,5.42,Clouds,overcast clouds
+Galway,IE,24.08,24.16,62,1024,3.68,Clouds,scattered clouds
+Limerick,IE,25.93,26.01,55,1023,3.28,Clouds,few clouds
+Waterford,IE,26.76,27.91,62,1023,3.58,Clouds,broken clouds
+Kilkenny,IE,27.24,27.65,50,1024,4.14,Clouds,scattered clouds
+Sligo,IE,24.29,24.24,56,1025,2.37,Clouds,broken clouds
+Athlone,IE,24.68,24.72,58,1024,4,Clouds,broken clouds
+Drogheda,IE,22.03,22.3,77,1026,5.88,Clouds,overcast clouds
+Dundalk,IE,22.05,22.19,72,1026,4.37,Clouds,overcast clouds
+Navan,IE,22.24,22.37,71,1026,5.86,Clouds,broken clouds
+Bray,IE,19.5,19.62,81,1024,1.79,Clouds,few clouds
+Tralee,IE,26.09,26.09,50,1023,3.19,Clouds,overcast clouds
+Ennis,IE,26.05,26.05,52,1023,3.86,Clouds,scattered clouds
+Carlow,IE,27.21,28.19,58,1024,4.21,Clouds,few clouds
+Naas,IE,22.79,22.74,62,1024,4.5,Clouds,few clouds
+Wexford,IE,21.05,21.38,83,1024,4.47,Clouds,few clouds
+Letterkenny,IE,24.44,24.32,53,1025,4,Clouds,few clouds
+Mullingar,IE,23.23,23.41,69,1025,4.97,Clouds,few clouds
+Tullamore,IE,25.08,25.31,64,1024,3.36,Clouds,scattered clouds

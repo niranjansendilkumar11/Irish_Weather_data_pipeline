@@ -3,6 +3,7 @@ import sqlite3
 
 from config import IRISH_CITIES
 from api import get_weather
+from export import export_weather_to_csv
 from database import (
     create_connection,
     create_weather_table,
@@ -122,6 +123,9 @@ def main():
         print(f"Average Humidity      : {get_average_humidity(weather_records)} %")
 
         print("=" * 50)
+        csv_file = export_weather_to_csv(weather_records)
+
+        print(f"\nWeather data exported to: {csv_file}")
 
     except Exception as error:
 
