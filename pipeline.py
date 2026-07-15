@@ -1,4 +1,5 @@
 import logging
+import sqlite3
 
 from config import IRISH_CITIES
 from api import get_weather
@@ -10,6 +11,13 @@ from database import (
     insert_weather_feature,
     fetch_all_weather,
     weather_record_exists
+)
+from analytics import (
+    get_average_temperature,
+    get_highest_temperature,
+    get_lowest_temperature,
+    get_average_humidity,
+    get_city_count
 )
 from utils import setup_logging
 from feature_engineering import generate_weather_features
@@ -79,9 +87,9 @@ def main():
         logging.info("Weather data inserted successfully.")
         logging.info("Engineered weather features stored successfully.")
 
-        rows = fetch_all_weather(connection)
+        stored_weather_records = fetch_all_weather(connection)
 
-        print(f"\nTotal raw weather records stored: {len(rows)}")
+        print(f"\nTotal raw weather records stored: {len(stored_weather_records)}")
 
         connection.close()
 
@@ -103,6 +111,16 @@ def main():
         print("=" * 50)
         print(f"Cities Processed : {len(weather_records)}")
         print(f"Records Inserted : {records_inserted}")
+        print("\n" + "=" * 50)
+        print("Weather Statistics")
+        print("=" * 50)
+
+        print(f"Cities Processed      : {get_city_count(weather_records)}")
+        print(f"Average Temperature   : {get_average_temperature(weather_records)} °C")
+        print(f"Highest Temperature   : {get_highest_temperature(weather_records)} °C")
+        print(f"Lowest Temperature    : {get_lowest_temperature(weather_records)} °C")
+        print(f"Average Humidity      : {get_average_humidity(weather_records)} %")
+
         print("=" * 50)
 
     except Exception as error:
