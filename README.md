@@ -127,3 +127,29 @@ All generated suggestions were reviewed, understood, tested, and adapted before 
 The development support conversation used during this project is available at:
 
 https://chatgpt.com/share/6a58e636-643c-83eb-a1ed-477ae2a04fb6
+
+---
+
+## Project Output
+
+### Pipeline Execution
+
+The pipeline successfully fetches weather data from the OpenWeatherMap API, stores it in SQLite, generates engineered features and exports the results to CSV.
+
+![Pipeline Output](images/pipeline_output.png)
+
+---
+
+### SQLite Database
+
+The collected weather observations are stored in a SQLite database.
+
+![SQLite Database](images/database.png)
+
+---
+
+### CSV Export
+
+Processed weather data is exported as a CSV file for further analysis.
+
+![CSV Export](images/csv_export.png)
