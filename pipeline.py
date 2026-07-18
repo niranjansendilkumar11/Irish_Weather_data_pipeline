@@ -18,7 +18,9 @@ from analytics import (
     get_highest_temperature,
     get_lowest_temperature,
     get_average_humidity,
-    get_city_count
+    get_city_count,
+    get_total_records,
+    get_latest_collection_time
 )
 from utils import setup_logging
 from feature_engineering import generate_weather_features
@@ -116,11 +118,13 @@ def main():
         print("Weather Statistics")
         print("=" * 50)
 
-        print(f"Cities Processed      : {get_city_count(weather_records)}")
-        print(f"Average Temperature   : {get_average_temperature(weather_records)} °C")
-        print(f"Highest Temperature   : {get_highest_temperature(weather_records)} °C")
-        print(f"Lowest Temperature    : {get_lowest_temperature(weather_records)} °C")
-        print(f"Average Humidity      : {get_average_humidity(weather_records)} %")
+        print(f"Unique Cities Stored  : {get_city_count(stored_weather_records)}")
+        print(f"Total Records Stored  : {get_total_records(stored_weather_records)}")
+        print(f"Average Temperature   : {get_average_temperature(stored_weather_records)} °C")
+        print(f"Highest Temperature   : {get_highest_temperature(stored_weather_records)} °C")
+        print(f"Lowest Temperature    : {get_lowest_temperature(stored_weather_records)} °C")
+        print(f"Average Humidity      : {get_average_humidity(stored_weather_records)} %")
+        print(f"Latest Collection     : {get_latest_collection_time(stored_weather_records)}")
 
         print("=" * 50)
         csv_file = export_weather_to_csv(weather_records)
