@@ -59,6 +59,8 @@ def main():
             print(f"Humidity Category    : {feature['humidity_category']}")
             print(f"Pressure Category    : {feature['pressure_category']}")
             print(f"Wind Category        : {feature['wind_category']}")
+            print(f"Weather Comfort    : {feature['weather_comfort']}")
+            print(f"Wind Intensity     : {feature['wind_intensity']}")
 
 
         connection = create_connection()

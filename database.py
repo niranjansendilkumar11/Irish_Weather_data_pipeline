@@ -79,7 +79,7 @@ def fetch_all_weather(connection):
     return cursor.fetchall()
 
 def weather_record_exists(connection, city):
-
+    
 
     cursor = connection.cursor()
 
@@ -87,7 +87,7 @@ def weather_record_exists(connection, city):
         SELECT COUNT(*)
         FROM weather_hourly
         WHERE city = ?
-        AND DATE(collected_at) = DATE('now')
+        AND collected_at >= datetime('now', '-30 minutes')
     """, (city,))
 
     count = cursor.fetchone()[0]
@@ -115,6 +115,10 @@ def create_feature_table(connection):
             pressure_category TEXT,
 
             wind_category TEXT,
+                   
+            weather_comfort TEXT,
+                   
+            wind_intensity TEXT,
 
             collected_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP
 
@@ -138,11 +142,13 @@ def insert_weather_feature(connection, feature):
             temperature_category,
             humidity_category,
             pressure_category,
-            wind_category
+            wind_category,
+            weather_comfort,
+            wind_intensity                   
 
         )
 
-        VALUES (?, ?, ?, ?, ?, ?)
+        VALUES (?, ?, ?, ?, ?, ?,?,?)
     """, (
 
         feature["city"],
@@ -150,7 +156,9 @@ def insert_weather_feature(connection, feature):
         feature["temperature_category"],
         feature["humidity_category"],
         feature["pressure_category"],
-        feature["wind_category"]
+        feature["wind_category"],
+        feature["weather_comfort"],
+        feature["wind_intensity"]
 
     ))
 
