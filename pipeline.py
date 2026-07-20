@@ -11,7 +11,11 @@ from database import (
     insert_weather_data,
     insert_weather_feature,
     fetch_all_weather,
-    weather_record_exists
+    weather_record_exists,
+    get_latest_weather,
+    get_total_weather_records,
+    get_recent_weather,
+    get_records_per_city
 )
 from analytics import (
     get_average_temperature,
@@ -93,8 +97,26 @@ def main():
         logging.info("Engineered weather features stored successfully.")
 
         stored_weather_records = fetch_all_weather(connection)
+        print("\nDatabase Summary")
+        print("=" * 50)
+
+        print(f"Total Records Stored : {get_total_weather_records(connection)}")
+
+        latest_records = get_latest_weather(connection)
+        print(f"Latest Records       : {len(latest_records)}")
+
+        recent_records = get_recent_weather(connection)
+        print(f"Last 24 Hours        : {len(recent_records)}")
 
         print(f"\nTotal raw weather records stored: {len(stored_weather_records)}")
+
+        print("\nRecords Stored Per City")
+        print("-" * 50)
+
+        city_records = get_records_per_city(connection)
+
+        for row in city_records:
+            print(f"{row['city']:<15} {row['total_records']}")
 
         connection.close()
 

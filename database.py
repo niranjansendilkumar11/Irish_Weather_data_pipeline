@@ -128,9 +128,6 @@ def create_feature_table(connection):
     connection.commit()
 
 def insert_weather_feature(connection, feature):
-    """
-    Insert engineered weather features.
-    """
 
     cursor = connection.cursor()
 
@@ -163,3 +160,52 @@ def insert_weather_feature(connection, feature):
     ))
 
     connection.commit()
+
+def get_latest_weather(connection, limit=20):
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM weather_hourly
+        ORDER BY collected_at DESC
+        LIMIT ?
+    """, (limit,))
+
+    return cursor.fetchall()
+
+
+def get_total_weather_records(connection):
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT COUNT(*)
+        FROM weather_hourly
+    """)
+
+    return cursor.fetchone()[0]
+
+
+def get_recent_weather(connection, hours=24):
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT *
+        FROM weather_hourly
+        WHERE collected_at >= datetime('now', ?)
+        ORDER BY collected_at DESC
+    """, (f"-{hours} hours",))
+
+    return cursor.fetchall()
+
+def get_records_per_city(connection):
+
+    cursor = connection.cursor()
+
+    cursor.execute("""
+        SELECT city, COUNT(*) AS total_records
+        FROM weather_hourly
+        GROUP BY city
+        ORDER BY city
+    """)
+
+    return cursor.fetchall()
