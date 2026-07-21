@@ -175,7 +175,7 @@ def main():
 
         print("=" * 50)
 
-        csv_file = export_weather_to_csv(weather_records)
+        csv_file = export_weather_to_csv(weather_records,engineered_features)
 
         print(f"\nWeather data exported to: {csv_file}")
 
