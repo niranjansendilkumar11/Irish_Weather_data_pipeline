@@ -24,7 +24,9 @@ from analytics import (
     get_average_humidity,
     get_city_count,
     get_total_records,
-    get_latest_collection_time
+    get_latest_collection_time,
+    get_average_temperature_by_city,
+    get_latest_weather_record
 )
 from utils import setup_logging
 from feature_engineering import generate_weather_features
@@ -150,7 +152,29 @@ def main():
         print(f"Average Humidity      : {get_average_humidity(stored_weather_records)} %")
         print(f"Latest Collection     : {get_latest_collection_time(stored_weather_records)}")
 
+        print("\n" + "=" * 50)
+        print("Average Temperature by City")
         print("=" * 50)
+
+        city_averages = get_average_temperature_by_city(stored_weather_records)
+
+        for city, average in sorted(city_averages.items()):
+            print(f"{city:<15}: {average} °C")
+
+        print("\n" + "=" * 50)
+        print("Most Recent Weather Record")
+        print("=" * 50)
+
+        latest_record = get_latest_weather_record(stored_weather_records)
+
+        if latest_record:
+            print(f"City           : {latest_record['city']}")
+            print(f"Temperature    : {latest_record['temperature']} °C")
+            print(f"Humidity       : {latest_record['humidity']} %")
+            print(f"Collected At   : {latest_record['collected_at']}")
+
+        print("=" * 50)
+
         csv_file = export_weather_to_csv(weather_records)
 
         print(f"\nWeather data exported to: {csv_file}")
@@ -158,7 +182,6 @@ def main():
     except Exception as error:
 
         logging.error(f"Pipeline failed: {error}")
-
 
 if __name__ == "__main__":
     main()
