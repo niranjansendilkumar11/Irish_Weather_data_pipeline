@@ -1,0 +1,21 @@
+City,Country,Temperature,Feels Like,Humidity,Pressure,Wind Speed,Weather,Description,Temperature Category,Humidity Category,Pressure Category,Wind Category,Weather Comfort,Wind Intensity
+Dublin,IE,18.5,18.44,78,1027,3.97,Clouds,broken clouds,Mild,High,High,Moderate,Moderate,Breezy
+Cork,IE,20.4,20.38,72,1026,3.6,Clear,clear sky,Warm,High,High,Moderate,Moderate,Breezy
+Galway,IE,18.14,17.99,76,1028,3.69,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Breezy
+Limerick,IE,18.54,18.15,65,1027,4.23,Clouds,broken clouds,Mild,Moderate,High,Moderate,Comfortable,Breezy
+Waterford,IE,18.55,18.21,67,1026,2.24,Clouds,overcast clouds,Mild,Moderate,High,Light,Comfortable,Breezy
+Kilkenny,IE,21.84,21.65,60,1026,1.79,Clouds,scattered clouds,Warm,Moderate,High,Light,Comfortable,Calm
+Sligo,IE,17.66,17.62,82,1029,3.57,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Breezy
+Athlone,IE,18.22,17.98,72,1028,3.75,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Breezy
+Drogheda,IE,19.12,18.94,71,1026,5.7,Clouds,broken clouds,Mild,High,High,Moderate,Moderate,Windy
+Dundalk,IE,18.93,18.78,73,1027,4.76,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Breezy
+Navan,IE,19.01,18.77,69,1026,3.98,Clouds,overcast clouds,Mild,Moderate,High,Moderate,Comfortable,Breezy
+Bray,IE,19.02,18.94,75,1027,2.95,Clouds,scattered clouds,Mild,High,High,Light,Moderate,Breezy
+Tralee,IE,17.38,17.29,81,1028,3.14,Clear,clear sky,Mild,High,High,Moderate,Moderate,Breezy
+Ennis,IE,18.2,17.9,70,1028,4.63,Clouds,few clouds,Mild,High,High,Moderate,Comfortable,Breezy
+Carlow,IE,21.66,21.63,67,1027,5.5,Clouds,overcast clouds,Warm,Moderate,High,Moderate,Comfortable,Windy
+Naas,IE,17.94,17.59,69,1026,4.45,Clouds,overcast clouds,Mild,Moderate,High,Moderate,Comfortable,Breezy
+Wexford,IE,18.83,19.12,90,1026,2.68,Clouds,scattered clouds,Mild,High,High,Light,Moderate,Breezy
+Letterkenny,IE,16.59,16.47,83,1029,4.51,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Breezy
+Mullingar,IE,18.08,17.8,71,1027,2.16,Clouds,overcast clouds,Mild,High,High,Light,Moderate,Breezy
+Tullamore,IE,20.64,20.59,70,1027,2.08,Clouds,overcast clouds,Warm,High,High,Light,Comfortable,Breezy

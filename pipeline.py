@@ -40,16 +40,28 @@ def main():
 
         weather_records = []
 
+        # Fetch weather data
         for city in IRISH_CITIES:
 
-            weather = get_weather(city)
+            try:
+                weather = get_weather(city)
 
-            if weather:
-                weather_records.append(weather)
+                if weather:
+                    weather_records.append(weather)
+                else:
+                    logging.warning(
+                        f"Weather data unavailable for {city}. Continuing with remaining cities..."
+                    )
 
-            else:
-                logging.warning(f"Could not fetch weather for {city}")
+            except Exception as error:
+                logging.error(f"Failed to process {city}: {error}")
+                logging.info("Continuing with remaining cities...")
+                continue
 
+        # Stop if no weather data was collected
+        if not weather_records:
+            logging.error("No weather data was collected. Pipeline stopped.")
+            return
 
         engineered_features = generate_weather_features(weather_records)
 
