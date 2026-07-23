@@ -32,6 +32,7 @@ The pipeline collects real-time weather data for multiple Irish cities using the
 - CSV
 - Logging
 - Git & GitHub
+- pytest / unittest
 
 ---
 
@@ -74,17 +75,20 @@ Irish_Weather_Data_Pipeline/
 
 ### Transform
 
-- Categorize:
+- Clean and validate weather data.
+- Generate engineered weather features by categorizing:
   - Temperature
   - Humidity
   - Pressure
   - Wind Speed
-- Generate summary statistics.
+  - Weather Comfort
+  - Wind Intensity
 
 ### Load
 
 - Store raw weather data in SQLite.
 - Store engineered weather features.
+- Generate weather analytics.
 - Export processed weather data to CSV.
 
 
@@ -94,7 +98,7 @@ Irish_Weather_Data_Pipeline/
 The project produces:
 
 - SQLite database (`weather.db`)
-- Engineered weather features
+- Engineered weather feature records
 - CSV export in the `exports` folder
 - Weather summary statistics
 - Pipeline log messages
@@ -153,3 +157,22 @@ The collected weather observations are stored in a SQLite database.
 Processed weather data is exported as a CSV file for further analysis.
 
 ![CSV Export](images/csv_export.png)
+
+## Weather Analytics
+
+The pipeline automatically calculates several analytics from the collected weather data, including:
+
+- Average temperature
+- Highest temperature
+- Lowest temperature
+- Average humidity
+- Total weather records
+- Number of cities stored
+- Latest collection time
+- Average temperature by city
+- Most recent weather record
+
+## Duplicate Handling
+
+Before storing new weather data, the pipeline checks whether a weather record for the same city has already been collected on the current day. Duplicate records are skipped to maintain data quality and avoid redundant storage.
+

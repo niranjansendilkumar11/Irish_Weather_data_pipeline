@@ -1,0 +1,21 @@
+City,Country,Temperature,Feels Like,Humidity,Pressure,Wind Speed,Weather,Description,Temperature Category,Humidity Category,Pressure Category,Wind Category,Weather Comfort,Wind Intensity
+Dublin,IE,19.89,19.66,66,1026,4.92,Clouds,scattered clouds,Mild,Moderate,High,Moderate,Comfortable,Breezy
+Cork,IE,23.18,23.04,57,1026,2.64,Clouds,overcast clouds,Warm,Moderate,High,Light,Moderate,Breezy
+Galway,IE,20.77,20.68,68,1027,2.15,Clouds,few clouds,Warm,Moderate,High,Light,Comfortable,Breezy
+Limerick,IE,22.08,21.86,58,1027,2.38,Clouds,overcast clouds,Warm,Moderate,High,Light,Moderate,Breezy
+Waterford,IE,22.17,22.11,64,1025,3.13,Clouds,overcast clouds,Warm,Moderate,High,Moderate,Moderate,Breezy
+Kilkenny,IE,22.81,22.66,58,1025,4.02,Clouds,broken clouds,Warm,Moderate,High,Moderate,Moderate,Breezy
+Sligo,IE,19.77,19.73,74,1027,3.37,Clouds,broken clouds,Mild,High,High,Moderate,Moderate,Breezy
+Athlone,IE,21.58,21.36,60,1027,3.09,Clouds,scattered clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Drogheda,IE,20.81,20.62,64,1026,4.18,Clouds,few clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Dundalk,IE,21.67,21.59,65,1026,3.75,Clouds,scattered clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Navan,IE,21.13,20.92,62,1026,3.52,Clouds,scattered clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Bray,IE,19.05,18.97,75,1024,0.45,Clouds,scattered clouds,Mild,High,High,Light,Moderate,Calm
+Tralee,IE,21.32,21.13,62,1027,2.62,Clouds,overcast clouds,Warm,Moderate,High,Light,Comfortable,Breezy
+Ennis,IE,21.72,21.46,58,1027,3.04,Clouds,overcast clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Carlow,IE,22.77,22.62,58,1026,4.19,Clouds,few clouds,Warm,Moderate,High,Moderate,Moderate,Breezy
+Naas,IE,21.83,21.66,61,1026,3.85,Clouds,scattered clouds,Warm,Moderate,High,Moderate,Comfortable,Breezy
+Wexford,IE,18.27,18.48,89,1025,5.81,Clouds,overcast clouds,Mild,High,High,Moderate,Moderate,Windy
+Letterkenny,IE,18.39,17.96,64,1027,3.21,Clouds,overcast clouds,Mild,Moderate,High,Moderate,Comfortable,Breezy
+Mullingar,IE,20.75,20.55,64,1027,2.72,Clouds,scattered clouds,Warm,Moderate,High,Light,Comfortable,Breezy
+Tullamore,IE,19.52,19.33,69,1027,2.67,Clouds,scattered clouds,Mild,Moderate,High,Light,Comfortable,Breezy
